@@ -1,5 +1,5 @@
 library("forecast")
-library(pracma)
+library("pracma")
 set.seed(123)
 
 results_file <- "resultados_df_checkpoint.csv"
@@ -369,6 +369,8 @@ for (p_name in names(AR_models)) {
   
   for (phi.real in AR_models[[p_name]]) {
     
+p=length(phi.real)
+    
 # Coeficientes reais do processo AR(p)
 #phi.real <- c(0.6, -0.3, 0.2, 0.1, -0.5)
 #phi.real <- c(0.2230762,0.2061473,0.3391942,0.2200997)
@@ -453,9 +455,6 @@ ar.real.polos <- resultado$polos$real
 
 # Número de observações
 nobs <- length(ar.real.y)
-
-# Ordem do processo AR
-p <- length(phi.real)
 
 # Ordem do filtro Butterworth (igual à ordem AR)
 N <- p
